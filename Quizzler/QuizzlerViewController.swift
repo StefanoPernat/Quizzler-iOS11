@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class QuizzlerViewController: UIViewController {
     
     //Place your instance variables here
     
