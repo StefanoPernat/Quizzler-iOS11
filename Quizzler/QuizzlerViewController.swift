@@ -13,6 +13,7 @@ class QuizzlerViewController: UIViewController {
     //Place your instance variables here
     let allQuestions = QuestionBank()
     var pickedAnswer: Bool = false
+    var questionNumber = 0
     
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -23,7 +24,7 @@ class QuizzlerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionLabel.text = allQuestions.list[0].questionText
+        questionLabel.text = allQuestions.list[questionNumber].questionText
     }
 
 
@@ -49,7 +50,12 @@ class QuizzlerViewController: UIViewController {
     
     
     func checkAnswer() {
-        
+        let answer = allQuestions.list[0].questionAnswer
+        if answer == pickedAnswer {
+            print("You got it!")
+        } else {
+            print("Wrong!")
+        }
     }
     
     
