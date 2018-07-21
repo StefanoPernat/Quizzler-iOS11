@@ -36,6 +36,10 @@ class QuizzlerViewController: UIViewController {
         }
         
         checkAnswer()
+        
+        questionNumber += 1
+        
+        nextQuestion()
     }
     
     
@@ -45,12 +49,17 @@ class QuizzlerViewController: UIViewController {
     
 
     func nextQuestion() {
+        if questionNumber == allQuestions.list.count {
+            questionNumber = 0
+            print("End of Quiz")
+        }
         
+        questionLabel.text = allQuestions.list[questionNumber].questionText
     }
     
     
     func checkAnswer() {
-        let answer = allQuestions.list[0].questionAnswer
+        let answer = allQuestions.list[questionNumber].questionAnswer
         if answer == pickedAnswer {
             print("You got it!")
         } else {
