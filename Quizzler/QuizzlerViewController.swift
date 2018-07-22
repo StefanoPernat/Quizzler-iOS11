@@ -85,9 +85,9 @@ class QuizzlerViewController: UIViewController {
         let answer = allQuestions.list[questionNumber].questionAnswer
         if answer == pickedAnswer {
             score += 1
-            print("You got it!")
+            ProgressHUD.showSuccess("Correct!")
         } else {
-            print("Wrong!")
+            ProgressHUD.showError("Wrong!")
         }
     }
     
