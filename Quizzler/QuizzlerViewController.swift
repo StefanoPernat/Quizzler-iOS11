@@ -51,6 +51,11 @@ class QuizzlerViewController: UIViewController {
     
     func updateUI() {
         scoreLabel.text = "Score: \(score)"
+        if questionNumber != allQuestions.list.count {
+            progressLabel.text = "\(questionNumber + 1)/\(allQuestions.list.count)"
+            progressBar.frame.size.width = (view.frame.size.width / CGFloat(allQuestions.list.count)) * CGFloat(questionNumber + 1)
+        }
+        
     }
     
 
