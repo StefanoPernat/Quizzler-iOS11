@@ -14,6 +14,11 @@ class QuizzlerViewController: UIViewController {
     let allQuestions = QuestionBank()
     var pickedAnswer: Bool = false
     var questionNumber = 0
+    var score = 0 {
+        didSet {
+            updateUI()
+        }
+    }
     
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -25,6 +30,7 @@ class QuizzlerViewController: UIViewController {
         super.viewDidLoad()
         
         questionLabel.text = allQuestions.list[questionNumber].questionText
+        updateUI()
     }
 
 
@@ -44,7 +50,7 @@ class QuizzlerViewController: UIViewController {
     
     
     func updateUI() {
-      
+        scoreLabel.text = "Score: \(score)"
     }
     
 
@@ -65,12 +71,15 @@ class QuizzlerViewController: UIViewController {
         } else {
             questionLabel.text = allQuestions.list[questionNumber].questionText
         }
+        
+        updateUI()
     }
     
     
     func checkAnswer() {
         let answer = allQuestions.list[questionNumber].questionAnswer
         if answer == pickedAnswer {
+            score += 1
             print("You got it!")
         } else {
             print("Wrong!")
@@ -79,6 +88,7 @@ class QuizzlerViewController: UIViewController {
     
     func startOver() {
         questionNumber = 0
+        score = 0
         nextQuestion()
     }
     
